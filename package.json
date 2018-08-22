@@ -1,0 +1,43 @@
+{
+  "name": "gateschema-form-react",
+  "version": "0.1.0",
+  "description": "A React component for generating forms from GateSchema.",
+  "keywords": [
+    "React",
+    "form",
+    "generate"
+  ],
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "browser": "dist/umd/gaateschema-form-react.js",
+  "scripts": {
+    "test": "jest --coverage",
+    "build": "rollup -c"
+  },
+  "author": "William17 <superbill2012@qq.com> https://github.com/William17",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.0.0-rc.1",
+    "@babel/plugin-proposal-class-properties": "^7.0.0-rc.1",
+    "@babel/preset-env": "^7.0.0-rc.1",
+    "@babel/preset-react": "^7.0.0-rc.1",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^23.4.2",
+    "gateschema": "^0.1.0",
+    "jest": "^23.5.0",
+    "jsdom": "^11.12.0",
+    "jsdom-global": "^3.0.2",
+    "react": "^16.2.0",
+    "react-dom": "^16.4.2",
+    "react-redux": "^5.0.7",
+    "react-test-renderer": "^16.4.2",
+    "redux": "^4.0.0",
+    "rollup": "^0.64.1",
+    "rollup-plugin-babel": "^4.0.0-beta.8",
+    "rollup-plugin-uglify": "^4.0.0"
+  },
+  "dependencies": {
+    "gateschema-transformer": "^0.1.1",
+    "prop-types": "^15.6.2"
+  }
+}
