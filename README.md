@@ -122,7 +122,7 @@ class App extends React.Component {
       <Provider store={store}>
         <GateSchemaForm 
           name="myForm" 
-          // now the form is bingding to store.form.myForm
+          // now the form is binding to store.form.myForm
           schema={schema} 
           onSubmit={handleSubmit}
         >
