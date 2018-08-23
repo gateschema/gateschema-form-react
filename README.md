@@ -9,21 +9,45 @@ A React component for generating forms from GateSchema.
 * Able to change schema dynamically  
 * Extendible, custom form component  
 
+## How it works
+It transforms a [gateschema](https://github.com/GateSchema/gateschema-js) and the input value into a [StateForm](https://github.com/stateform/StateForm-Specification) state, and passes the state to a StateForm implementation 
+
 
 ## Quick Start  
-In this example use [antd](https://ant.design), and [stateform-antd](https://github.com/stateform/stateform-antd) as UI layer
+In this example we use [stateform-antd](https://github.com/stateform/stateform-antd) as [StateForm](https://github.com/stateform/StateForm-Specification) layer
 ```js  
 // file: GateSchemaForm.js
 
 // stateform implementation
 import createStateForm from '@stateform/antd'
-import "@stateform/iview/dist/stateform-antd.css"
+import "@stateform/antd/dist/stateform-antd.css"
 
 import { createForm } from 'gateschema-form-react'
 
+// 1. create StateForm component
+// see https://github.com/stateform/stateform-antd for more details
 const StateForm = createStateForm({
-  // stateform options
+  upload: {
+    handleUpload(file, cb) {
+      // custom implementation
+      // cb must be called asynchronously
+      setTimeout(() => {
+        cb({
+          status: 'done', // 'done' | 'error',
+          url: 'http://....'
+        })
+      }, 1000)
+    },
+    handleRemove(file) {
+
+    }
+  },
+  components: {
+    // custom components
+  }
 })
+
+// 2. create GateSchemaForm component
 const GateSchemaForm = createForm({
   StateForm
 })
@@ -134,15 +158,13 @@ class App extends React.Component {
 
 ```
 
-More Expamples on CodeSandbox  
+More Expamples on <a href="https://codesandbox.io/s/k2qm6z4nxo?module=%2Fsrc%2Fschemas.js" target="_blank">CodeSandbox</a>
 
 ## Install  
 ```
 npm install gateschema-form-react --save  
 ``` 
 
-## How it works
-It transforms a [gateschema](https://github.com/GateSchema/gateschema-js) and the input value into a [StateForm](https://github.com/stateform/StateForm-Specification) state, and passes the state to a StateForm implementation 
 
 ## Usage  
 
@@ -206,7 +228,7 @@ const schema = _
 
 ## Q&A  
 ### Custom validation ?  
-This form component is GateSchema driven. You should define your GateSchema keyword for custom validations  
+This form component is GateSchema driven. You should [define your GateSchema keyword](https://github.com/GateSchema/gateschema-js/blob/master/docs/api.md#addkeywordkeyword-keyword-msgs-msgs-void) for custom validations  
 ### Conditional fields ?  
 Use `switch` keyword  
 ```js  
