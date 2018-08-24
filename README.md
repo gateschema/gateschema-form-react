@@ -1,5 +1,5 @@
 # gateschema-form-react  [![Build Status](https://travis-ci.org/GateSchema/gateschema-form-react.svg?branch=master)](https://travis-ci.org/GateSchema/gateschema-form-react)  [![Coverage Status](https://coveralls.io/repos/github/GateSchema/gateschema-form-react/badge.svg)](https://coveralls.io/github/GateSchema/gateschema-form-react)
-A React component for generating forms from GateSchema.
+A React component for generating forms from [gateschema-js](https://github.com/GateSchema/gateschema-js).
 
 ## Features  
 * GateSchema driven  
@@ -10,7 +10,7 @@ A React component for generating forms from GateSchema.
 * Extendible, custom form component  
 
 ## How it works
-It transforms a [gateschema](https://github.com/GateSchema/gateschema-js) and the input value into a [StateForm](https://github.com/stateform/StateForm-Specification) state, and passes the state to a StateForm implementation 
+It transforms a [gateschema-js](https://github.com/GateSchema/gateschema-js) instance and the input value into a [StateForm](https://github.com/stateform/StateForm-Specification) state, and use a StateForm implemetation to display the form. 
 
 
 ## Quick Start  
@@ -158,7 +158,7 @@ class App extends React.Component {
 
 ```
 
-More Expamples on <a href="https://codesandbox.io/s/k2qm6z4nxo?module=%2Fsrc%2Fschemas.js" target="_blank">CodeSandbox</a>
+**Live Expamples on [CodeSandbox](https://codesandbox.io/s/k2qm6z4nxo?module=%2Fsrc%2Fschemas.js)**  
 
 ## Install  
 ```
