@@ -290,7 +290,8 @@ function createForm() {
       _this2.errors = [];
       _this2.activePaths = {};
       _this2.validationOptions = {
-        skipAsync: true
+        skipAsync: true,
+        useCache: true
       };
       _this2.pathValidationOptions = {};
       _this2.state = {
