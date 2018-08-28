@@ -284,5 +284,8 @@ const schema = _
 ### Custom component ?  
 Extend the StateForm implementation  
 
+## Changelog  
+See [CHANGELOG](./CHANGELOG.md)
+
 ## License  
 MIT
