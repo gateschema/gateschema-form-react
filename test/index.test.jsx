@@ -331,45 +331,9 @@ describe('submit: all validation error will be shown', () => {
     // error become truthy
     setTimeout(() => {
       expect(state.children[0].error).toBeTruthy()
-      expect(mockHandleSubmit.mock.calls.length).toBe(0)
-      done()
-    }, 100)
-  })
-})
-
-describe('submit: submit event will be trigger if there is no validation error', () => {
-  const schema = _.map({
-    stringField: _.required.string.notEmpty,
-  })
-  const rootData = {
-    stringField: 'foo',
-  }
-  let state
-  let stateForm
-  let component
-  const mockHandleSubmit = jest.fn()
-  beforeAll((done) => { 
-    const StateForm = createMockStateForm(function() {
-      if (this.props.state) {
-        state = this.props.state
-        stateForm = this
-        done()
-      }
-    })
-    const GateSchemaForm = createForm({
-      StateForm
-    })
-    const Component = createParentComponent(schema, rootData, GateSchemaForm)
-    renderer.create(<Component onSubmit={mockHandleSubmit} />)
-  })
-
-  it('submit event will be triggered', (done) => {
-    expect(mockHandleSubmit.mock.calls.length).toBe(0)
-    // emit submit
-    stateForm.emitSubmit()
-    setTimeout(() => {
       expect(mockHandleSubmit.mock.calls.length).toBe(1)
       done()
     }, 100)
   })
 })
+

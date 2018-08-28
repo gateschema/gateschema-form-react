@@ -227,9 +227,7 @@ export function createForm(options = {}) {
         activePaths[key] = true
       })
       this.renderSchema(() => {
-        if (this.errors.length === 0) {
-          this.props.onSubmit()
-        }
+        this.props.onSubmit(this.errors)
       })
     }
     handleReset() {

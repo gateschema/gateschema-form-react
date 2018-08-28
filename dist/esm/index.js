@@ -249,9 +249,7 @@ function createForm() {
         });
 
         _this2.renderSchema(function () {
-          if (_this2.errors.length === 0) {
-            _this2.props.onSubmit();
-          }
+          _this2.props.onSubmit(_this2.errors);
         });
       });
 
