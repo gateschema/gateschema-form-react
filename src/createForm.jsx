@@ -35,7 +35,8 @@ export function createForm(options = {}) {
       this.errors = []
       this.activePaths = {}
       this.validationOptions = {
-          skipAsync: true
+          skipAsync: true,
+          useCache: true
       }
       this.pathValidationOptions = {}
 
