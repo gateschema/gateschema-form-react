@@ -160,7 +160,7 @@ function createForm() {
         var errorMsg; // collect error
 
         if (error && !ignoreErrors[error.keyword]) {
-          _this2.errors.push([path, error]);
+          _this2.errors.push(error);
 
           errorMsg = error.msg;
         }
