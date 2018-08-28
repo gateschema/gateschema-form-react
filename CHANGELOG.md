@@ -1,3 +1,13 @@
+<a name="0.2.2"></a>
+## [0.2.2](https://github.com/GateSchema/gateschema-form-react/compare/0.2.1...0.2.2) (2018-08-28)
+
+
+### Bug Fixes
+
+* fix submit validationOptions ([3b8821b](https://github.com/GateSchema/gateschema-form-react/commit/3b8821b))
+
+
+
 <a name="0.2.1"></a>
 ## 0.2.1 (2018-08-28)
 
