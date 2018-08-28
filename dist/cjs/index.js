@@ -254,26 +254,40 @@ function createForm() {
           activePaths[key] = true;
         });
 
-        _this2.renderSchema(function () {
-          _this2.props.onSubmit(_this2.errors);
+        _this2.renderSchema({
+          validationOptions: _this2.submitValidationOptions,
+          cb: function cb() {
+            _this2.props.onSubmit(_this2.errors);
+          }
         });
       });
 
-      _defineProperty(_assertThisInitialized(_assertThisInitialized(_this2)), "renderSchema", function (cb) {
+      _defineProperty(_assertThisInitialized(_assertThisInitialized(_this2)), "renderSchema", function () {
+        var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+        var _assertThisInitialize2 = _assertThisInitialized(_assertThisInitialized(_this2)),
+            defaultValidationOptions = _assertThisInitialize2.validationOptions,
+            defaultPathValidationOptions = _assertThisInitialize2.pathValidationOptions;
+
+        var cb = options.cb,
+            _options$validationOp = options.validationOptions,
+            validationOptions = _options$validationOp === void 0 ? defaultValidationOptions : _options$validationOp,
+            _options$pathValidati = options.pathValidationOptions,
+            pathValidationOptions = _options$pathValidati === void 0 ? defaultPathValidationOptions : _options$pathValidati;
         var _this2$state = _this2.state,
             value = _this2$state.value,
             schema = _this2$state.schema;
         _this2.errors = [];
         _this2.cache = {};
-        var options = {
+        var transformOptions = {
           path: '/',
           value: value,
           rootData: value,
-          validationOptions: _this2.validationOptions,
-          pathValidationOptions: _this2.pathValidationOptions,
+          validationOptions: validationOptions,
+          pathValidationOptions: pathValidationOptions,
           transform: _this2.transformNode
         };
-        transformer.transform(schema, options, function (formState) {
+        transformer.transform(schema, transformOptions, function (formState) {
           _this2.setFormState(formState);
 
           return cb && cb();
@@ -289,6 +303,9 @@ function createForm() {
       _this2.activePaths = {};
       _this2.validationOptions = {
         skipAsync: true,
+        useCache: true
+      };
+      _this2.submitValidationOptions = {
         useCache: true
       };
       _this2.pathValidationOptions = {};

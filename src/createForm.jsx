@@ -38,6 +38,9 @@ export function createForm(options = {}) {
           skipAsync: true,
           useCache: true
       }
+      this.submitValidationOptions = {
+        useCache: true
+      }
       this.pathValidationOptions = {}
 
       this.state = {
@@ -226,26 +229,37 @@ export function createForm(options = {}) {
       Object.keys(this.cache).forEach(key => {
         activePaths[key] = true
       })
-      this.renderSchema(() => {
-        this.props.onSubmit(this.errors)
+      this.renderSchema({
+        validationOptions: this.submitValidationOptions, 
+        cb: () => {
+          this.props.onSubmit(this.errors)
+        }
       })
     }
     handleReset() {
       this.props.onReset()
     }
-    renderSchema = (cb) => {
+    renderSchema = (options = {}) => {
+      const {
+        validationOptions: defaultValidationOptions, 
+        pathValidationOptions: defaultPathValidationOptions
+      } = this
+      const {cb, 
+        validationOptions = defaultValidationOptions, 
+        pathValidationOptions = defaultPathValidationOptions
+      } = options
       const {value, schema} = this.state
       this.errors = []
       this.cache = {}
-      const options = {
+      const transformOptions = {
         path: '/',
         value: value,
         rootData: value,
-        validationOptions: this.validationOptions,
-        pathValidationOptions: this.pathValidationOptions,
+        validationOptions,
+        pathValidationOptions,
         transform: this.transformNode,
       }
-      transformer.transform(schema, options, (formState) => {
+      transformer.transform(schema, transformOptions, (formState) => {
         this.setFormState(formState)
         return cb && cb()
       })
